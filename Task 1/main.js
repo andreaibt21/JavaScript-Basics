@@ -28,57 +28,79 @@ if (age > ignasiAge) {
     console.log("You have the same age as Ignasi")
 }
 
+//Array functions
+
 var classNames = ["Andrea", "Brako", "Janneth", "Flor", "Belu", "Luana", "Nadu", "Rodrigo"];
+
+//Exercise 1
 //change the order to be A-Z
 classNames.sort();
-//print first name
-console.log(classNames[0]);
-//print last name
-console.log(classNames[classNames.length - 1]);
-//print all names 
+console.log(classNames[0]); //print first name
+console.log(classNames[classNames.length - 1]);//print last name 
 for (var i = 0; i < classNames.length; i++) {
-    console.log(classNames[i])
+    console.log(classNames[i])//print all names
 };
+
 
 var classAges = [21, 20, 32, 19, 20, 22, 24, 32]
 
+//Exercise 2
 //print every age
-var i = 0;
-while (i < classAges.length) {
-    console.log(classAges[i])
-    i++;
-}
 //print even numbers  
-
-/*var j=0;
-while(j < classAges.length){
- 
-if (classAges[j] % 2 == 0){
-    console.log( "even numbers:" + classAges[j])
-}
-j++;
-}; */
-
-for (var i = 0; i < classAges.length; i++) {
-    if (classAges[i] % 2 == 0) {
-        console.log("even numbers:" + classAges[i])
+function evenNum1() {
+    var i = 0;
+    while (i < classAges.length) {
+        console.log('All ages: ', classAges[i])
+        i++;
     }
-};
+    var j = 0;
+    while (j < classAges.length) {
+        if (classAges[j] % 2 == 0) {
+            console.log("Even numbers: ", classAges[j])
+        }
+        j++;
+    };
+}
+evenNum1(numbers)
+function evenNum2() {
 
+    for (let j = 0; j < classAges.length; j++) {
+        console.log('All ages: ', classAges[j]);
+    }
+    for (var i = 0; i < classAges.length; i++) {
+        if (classAges[i] % 2 == 0) {
+            console.log("even numbers: ", classAges[i])
+        }
+    };
+
+}
 var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+//Exercise 3
 //min number of an array
-function minNumber(arrayNumber) {
-    var min = Math.min.apply(null, arrayNumber);
-    console.log(min)
-}
-minNumber(numbers);
+
+ function min(arrayNumber){
+     var menor = arrayNumber[0];
+     for(var i= 0; i < arrayNumber.length; i++) {
+        if ( arrayNumber[i] < menor){
+            menor= arrayNumber[i]
+        }
+    }
+    console.log('The min number is:' , menor )
+ }
+min(numbers)
+
+
+//Exercise 4
 //max number of an array
 function maxNumber(arrayNumber) {
     var max = Math.max.apply(null, arrayNumber);
     console.log(max)
 }
 maxNumber(numbers);
+
+
+//Exercise 5
 //The function will print the value of the element at 
 //the given position (one-based) to the console.
 function giveNumber(array, index) {
@@ -91,31 +113,38 @@ giveNumber(numbers, 5);
 giveNumber(numbers, 6);
 
 
-var numbers2 = [1, 2, 3, 4, 4, 5, 5, 6, 7, 8, 8, 9, 10];
-
+//Exercise 6
 // only prints the values that are repeated  
-/*function repeat(array) {
+
+var numbers2 = [1, 2, 3, 4, 4, 5, 5, 6, 7, 8, 8, 9, 5, 10];
+
+function repeat(array) {
+    var numArray = [];
     var repeatedNum = [];
     for (var i = 0; i < array.length; i++) {
-        for (var j = 0; j < array.length; j++) {
-            if (array[i] === array[j]) {
-                repeatedNum.push(array[j])
-            }
+        if (!numArray.includes(array[i])) {
+            numArray.push(array[i])
+        } else if (numArray.includes(array[i]) && !repeatedNum.includes(array[i])) {
+            repeatedNum.push(array[i])
         }
     }
     console.log(repeatedNum)
 }
 repeat(numbers2)
-*/
-myColor = ["Red", "Green", "White", "Black"];
 
+//Exercise 7
 //join all elements of the following array into a string. 
+
+myColor = ["Red", "Green", "White", "Black"];
 
 function joinItems(array) {
     console.log(array.join(", "))
 }
 joinItems(myColor);
 
+//STRING FUNCTIONS
+
+//Exercise 1
 // that reverses a number
 
 function reverse(num) {
@@ -129,6 +158,7 @@ function reverse(num) {
 
 reverse(123456)
 
+//Exercise 2
 //alphabetic order
 
 function alphabetic(word) {
@@ -141,23 +171,39 @@ function alphabetic(word) {
 }
 alphabetic('jhbgfstatfs')
 
-
-//Camel case 
+//Exercise 3
+//Camel Case 
 
 function camelCase(string) {
 
-    var changeword = string.split(' ');
-
-    for (var i = 0; i < string.length; i++) {
-        var word = string[i]
+    var changeWord = string.split(' ');
+    var newCamel = [];
+    for (var i = 0; i < changeWord.length; i++) {
+        var word = changeWord[i]
             .charAt(0)
-            .toUpperCase()
+            .toUpperCase() + changeWord[i].slice(1);
+        newCamel.push(word)
+
+
     }
-
-    
-
-
-    //   .join(' ');
-    //  console.log(a)
+    console.log(newCamel.join(' '))
 }
-//camelCase('princess of persia')
+camelCase('princess of persia')
+camelCase('jorgelin andresin')
+
+
+//Exercise 4
+//longest word on a phrase
+ function longestWord (string) {
+      var words = string.split(' ');
+      var aux = string[0];
+
+      for(var i = 0; i < words.length; i++){
+          if(aux.length < words[i].length){
+              aux = words[i];
+          }
+      };
+    console.log('The longest word in the string is: ' , aux)  
+ }
+longestWord("Web Development Tutorial")
+
