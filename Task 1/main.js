@@ -61,6 +61,8 @@ function evenNum1() {
         j++;
     };
 }
+
+//print even numbers
 evenNum1(numbers)
 function evenNum2() {
 
@@ -86,7 +88,7 @@ var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
             menor= arrayNumber[i]
         }
     }
-    console.log('The min number is:' , menor )
+    console.log('The lowest number is:' , menor )
  }
 min(numbers)
 
@@ -94,9 +96,16 @@ min(numbers)
 //Exercise 4
 //max number of an array
 function maxNumber(arrayNumber) {
-    var max = Math.max.apply(null, arrayNumber);
-    console.log(max)
+    var max = arrayNumber[0];
+    for (let i = 0; i < arrayNumber.length; i++) {
+        if(max < arrayNumber[i]){
+            max = arrayNumber[i]
+        }
+        
+    }
+  console.log('The biggest number is:' , max)
 }
+
 maxNumber(numbers);
 
 
@@ -104,7 +113,7 @@ maxNumber(numbers);
 //The function will print the value of the element at 
 //the given position (one-based) to the console.
 function giveNumber(array, index) {
-    var indexGiven = array[index]
+    var indexGiven = array[index -1]
     console.log(indexGiven)
 }
 
@@ -155,15 +164,28 @@ function reverse(num) {
         .join(''));
     console.log(newNum)
 }
-
 reverse(123456)
+
+ function rever(input){
+     var string = "" + input;
+     var array = string.split("");
+     var reverse=[];
+       
+     for (var i = array.length; i >= 0; i--) {
+       reverse.push(array[i]);
+       
+    }
+    return reverse.join("")
+ }
+ console.log(rever("holaaa"))
 
 //Exercise 2
 //alphabetic order
 
 function alphabetic(word) {
+    var string = "" + word;
     var changeOrder =
-        word
+        string
             .split('')
             .sort()
             .join('');
